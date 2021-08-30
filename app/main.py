@@ -1,9 +1,7 @@
 from flask import Flask, request, jsonify, redirect, url_for, render_template, flash
 from datetime import datetime
 from sharedTools import *
-from ach import *
 from flask_cors import CORS
-import numpy as np
 
 app= Flask(__name__)
 DB = database("db")
@@ -12,7 +10,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 CORS(app)
 
 
-#Iot de CO2s
+#Actualizado
 
 @app.route("/") #Actualizada
 def all():
