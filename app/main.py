@@ -14,41 +14,35 @@ CORS(app)
 
 @app.route("/") #Actualizada
 def all():
-      return jsonify(DB.load())
+     return "Hola mundo"
 
 @app.route("/new/<string:sen>") #Actualizado
 def postNewSensor(sen):
-      db = DB.load()
-      if exist(sen, db):
-            return jsonify({"error": "'"+sen+"' alrredy exists"})
-      else:
-            db[sen] = {"central":{"DATE":[],"HUM":[],"PPM":[],"TEMP":[]},"lateral":{"DATE":[],"HUM":[],"PPM":[],"TEMP":[]}}
-            DB.update(db)
-            return jsonify({"sucess": "'"+sen+"' fue creado correctamente"})
+      c
 
-@app.route("/update", methods=["PUT"]) #Actualizado
-def updateValues():
-      """
-      request - 
-      {
-        "name": "nombre",
-        "site": "ubicación"
-        "series": {
-            "HUM": [],
-            "PPM": [],
-            "TEMP": []
-          }
-      }
-      """
-      post = request.json
-      db = DB.load()
-      if exist(post["name"], db):
-            now = datetime.now()
-            db[post["name"]][post["site"]]["PPM"].append(post["series"]["PPM"])
-            db[post["name"]][post["site"]]["HUM"].append(post["series"]["HUM"])
-            db[post["name"]][post["site"]]["TEMP"].append(post["series"]["TEMP"])
-            db[post["name"]][post["site"]]["DATE"].append(str(now.date())+"/"+str(now.time()))
-            DB.update(db)
-            return jsonify({"sucess": "'"+post["name"]+"' fue falta actualizar correctamente"})
-      else:
-            return jsonify({"error": "'"+post["name"]+"' does not exists"})
+# @app.route("/update", methods=["PUT"]) #Actualizado
+# def updateValues():
+#       """
+#       request - 
+#       {
+#         "name": "nombre",
+#         "site": "ubicación"
+#         "series": {
+#             "HUM": [],
+#             "PPM": [],
+#             "TEMP": []
+#           }
+#       }
+#       """
+#       post = request.json
+#       db = DB.load()
+#       if exist(post["name"], db):
+#             now = datetime.now()
+#             db[post["name"]][post["site"]]["PPM"].append(post["series"]["PPM"])
+#             db[post["name"]][post["site"]]["HUM"].append(post["series"]["HUM"])
+#             db[post["name"]][post["site"]]["TEMP"].append(post["series"]["TEMP"])
+#             db[post["name"]][post["site"]]["DATE"].append(str(now.date())+"/"+str(now.time()))
+#             DB.update(db)
+#             return jsonify({"sucess": "'"+post["name"]+"' fue falta actualizar correctamente"})
+#       else:
+#             return jsonify({"error": "'"+post["name"]+"' does not exists"})
