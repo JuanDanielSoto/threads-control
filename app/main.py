@@ -18,31 +18,20 @@ def all():
 
 @app.route("/new/<string:sen>") #Actualizado
 def postNewSensor(sen):
-      c
+      None
 
-# @app.route("/update", methods=["PUT"]) #Actualizado
-# def updateValues():
-#       """
-#       request - 
-#       {
-#         "name": "nombre",
-#         "site": "ubicación"
-#         "series": {
-#             "HUM": [],
-#             "PPM": [],
-#             "TEMP": []
-#           }
-#       }
-#       """
-#       post = request.json
-#       db = DB.load()
-#       if exist(post["name"], db):
-#             now = datetime.now()
-#             db[post["name"]][post["site"]]["PPM"].append(post["series"]["PPM"])
-#             db[post["name"]][post["site"]]["HUM"].append(post["series"]["HUM"])
-#             db[post["name"]][post["site"]]["TEMP"].append(post["series"]["TEMP"])
-#             db[post["name"]][post["site"]]["DATE"].append(str(now.date())+"/"+str(now.time()))
-#             DB.update(db)
-#             return jsonify({"sucess": "'"+post["name"]+"' fue falta actualizar correctamente"})
-#       else:
-#             return jsonify({"error": "'"+post["name"]+"' does not exists"})
+@app.route("/update", methods=["PUT"]) #Actualizado
+def updateValues():
+      """
+      request - 
+      {
+        "name": "nombre",
+        "site": "ubicación"
+        "series": {
+            "HUM": [],
+            "PPM": [],
+            "TEMP": []
+          }
+      }
+      """
+      return jsonify(post)
