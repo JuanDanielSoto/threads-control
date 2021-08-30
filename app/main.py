@@ -20,7 +20,7 @@ def all():
 def postNewSensor(sen):
       None
 
-@app.route("/update", methods=["PUT"]) #Actualizado
+@app.route("/update", methods=["POST"]) #Actualizado
 def updateValues():
       """
       request - 
@@ -34,4 +34,5 @@ def updateValues():
           }
       }
       """
+      post = request.json
       return jsonify(post)
