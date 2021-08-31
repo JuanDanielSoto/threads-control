@@ -44,6 +44,16 @@ def updateValues():
       except:
             return jsonify({"status":"403 Bad request"})
 
+@app.route("/clear") #Actualizado
+def clear():
+      post = request.json
+      DB.update({})
+      return jsonify({"status":"success"})
+      
+
+
+
+
 #Access login
 
 @app.route("/login/validate", methods=["POST"])
