@@ -14,7 +14,8 @@ CORS(app)
 
 @app.route("/") #Actualizada
 def all():
-     return jsonify({"message":"Hola mundo"})
+     db = DB.load()
+     return jsonify(db)
 
 @app.route("/new/<string:sen>") #Actualizado
 def postNewSensor(sen):
@@ -34,5 +35,11 @@ def updateValues():
           }
       }
       """
-      post = request.json
-      return jsonify(post)
+      try:
+            post = request.json
+            db = DB.load()
+            db[post["thread"]] = post["values"]
+            DB.update(db)
+            return jsonify({"status":"success"})
+      except:
+            return jsonify({"status":"403 Bad request"})
