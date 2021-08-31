@@ -38,10 +38,9 @@ def updateValues():
       try:
             post = request.json
             db = DB.load()
-            db.append(post)
+            db[post["thread"]] = post["values"]
             DB.update(db)
-            # return jsonify({"status":"success"})
-            return jsonify(post)
+            return jsonify({"status":"success"})
       except:
             return jsonify({"status":"403 Bad request"})
 
