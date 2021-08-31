@@ -14,7 +14,7 @@ CORS(app)
 
 @app.route("/") #Actualizada
 def all():
-     return "Hola mundo"
+     return jsonify({"message":"Hola mundo"})
 
 @app.route("/new/<string:sen>") #Actualizado
 def postNewSensor(sen):
