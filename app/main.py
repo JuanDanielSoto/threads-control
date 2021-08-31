@@ -38,7 +38,7 @@ def updateValues():
       try:
             post = request.json
             db = DB.load()
-            db[post["thread"]] = post["values"]
+            db.append(post)
             DB.update(db)
             # return jsonify({"status":"success"})
             return jsonify(post)
